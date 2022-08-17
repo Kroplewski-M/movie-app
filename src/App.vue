@@ -1,6 +1,6 @@
 <template>
   <AppNav></AppNav>
-  <AppMain></AppMain>
+  <AppMain :API_KEY="API_KEY"></AppMain>
 
 </template>
 
@@ -10,7 +10,12 @@ import AppMain from './components/AppMain.vue';
 
 export default {
     name: "App",
-    components: { AppNav, AppMain }
+    components: { AppNav, AppMain },
+    data(){
+      return{
+        API_KEY: 'ee82108c7a30e37aeeb33fdac873495a',
+      }
+    }
 }
 </script>
 
