@@ -1,6 +1,6 @@
 <template>
-  <AppNav></AppNav>
-  <AppMain :API_KEY="API_KEY"></AppMain>
+  <AppNav @scroll="scroll"></AppNav>
+  <AppMain :API_KEY="API_KEY" ref="AppMain"></AppMain>
 
 </template>
 
@@ -14,6 +14,12 @@ export default {
     data(){
       return{
         API_KEY: 'ee82108c7a30e37aeeb33fdac873495a',
+      }
+    },
+    methods:{
+      scroll(){
+
+        window.scrollTo(0,1000);
       }
     }
 }
