@@ -1,6 +1,7 @@
 <template>
   <AppNav></AppNav>
   <AppMain></AppMain>
+
 </template>
 
 <script>
@@ -13,4 +14,7 @@ export default {
 }
 </script>
 
+<style>
+
+</style>
 

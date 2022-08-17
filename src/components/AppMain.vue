@@ -1,5 +1,6 @@
 <template>
-  Nav
+  <div class="h-[100%] w-[100%] bg-red-400">
+  </div>
 </template>
 
 <script>
