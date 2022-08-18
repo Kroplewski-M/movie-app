@@ -1,5 +1,5 @@
 <template>
-  <section class="w-[100%] h-[100vh] bg-[#121212]">
+  <section class="w-[100%] h-[120vh] bg-[#121212]">
     <div class="w-[100%] h-[200px]">
         <img :src="heroBg" alt="" class="w-[50%] h-[300px] hover:shadow-xl hover:shadow-white hover:cursor-pointer absolute left-[25%] rounded-md">
         <p class="text-center relative z-50 text-white font-bold text-[3em] pt-[100px]">{{this.heroName}}</p>
@@ -8,8 +8,12 @@
     </div>
     <div class="text-green-400 mt-[200px] ml-10">
         <p class="font-bold text-[20px]">Trending-</p>
-        <div v-for="movie in array" :key="movie.title">
-            {{movie.title}}
+        <div class="flex flex-wrap">
+            <div v-for="movie in trendingArray" :key="movie.title">
+                <div class="w-[200px] h-[300px] rounded-md bg-white ml-5 mt-5">
+                    
+                </div>
+            </div>
         </div>
     </div>
   </section>
@@ -23,9 +27,10 @@ export default {
     data(){
         return{
             trendingMovies:'',
-            array: [],
+            trendingArray: [],
             heroBg:``,
             heroName: ``,
+            bgPath:"https://image.tmdb.org/t/p/w500",
         };
     },
     methods:{
@@ -43,7 +48,7 @@ export default {
                 if(this.trendingMovies.results[i].title == undefined){
                     continue;
                 }else{
-                this.array.push(this.trendingMovies.results[i]);
+                    this.trendingArray.push(this.trendingMovies.results[i]);
                 }
             }
         }
