@@ -8,8 +8,8 @@
     </div>
     <div class="text-green-400 mt-[200px] ml-10">
         <p class="font-bold text-[20px]">Trending-</p>
-        <div>
-            {{this.array}}
+        <div v-for="movie in array" :key="movie.title">
+            {{movie.title}}
         </div>
     </div>
   </section>
@@ -26,7 +26,6 @@ export default {
             array: [],
             heroBg:``,
             heroName: ``,
-
         };
     },
     methods:{
@@ -41,7 +40,11 @@ export default {
         },
         getTrendingMovies(){
             for(let i = 0; i < 20; i++){
+                if(this.trendingMovies.results[i].title == undefined){
+                    continue;
+                }else{
                 this.array.push(this.trendingMovies.results[i]);
+                }
             }
         }
     },
