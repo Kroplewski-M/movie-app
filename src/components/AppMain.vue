@@ -10,8 +10,9 @@
         <p class="font-bold text-[20px]">Trending-</p>
         <div class="flex flex-wrap">
             <div v-for="movie in trendingArray" :key="movie.title">
-                <div class="w-[200px] h-[300px] rounded-md bg-white ml-5 mt-5">
-                    
+                <div class="w-[180px] h-[220px] rounded-md bg-white ml-5 mt-10 hover:cursor-pointer hover:shadow-lg hover:shadow-white">
+                    <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
+                    <p class="font-bold">{{movie.title}}</p>
                 </div>
             </div>
         </div>
@@ -51,6 +52,10 @@ export default {
                     this.trendingArray.push(this.trendingMovies.results[i]);
                 }
             }
+        },
+        getImage(movie){
+            let image = this.bgPath + movie.backdrop_path;
+            return image;
         }
     },
     created(){
