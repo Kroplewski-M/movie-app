@@ -12,6 +12,7 @@
             <div v-for="movie in trendingArray.slice(0,12)" :key="movie.title">
                 <div class="w-[220px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
                     <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
+                    <p class="absolute -mt-[35px] w-[30px] h-[30px] rounded-full bg-blue-800 text-white shadow-xl pl-[9px] pt-[3px] font-bold">{{Math.round(movie.vote_average)}}</p>
                     <p class="font-bold">{{movie.title}}</p>
                 </div>
             </div>
@@ -24,6 +25,7 @@
             <div v-for="movie in upcomingArray.slice(0,12)" :key="movie.title">
                 <div class="w-[220px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
                     <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
+                    <p class="absolute -mt-[35px] w-[30px] h-[30px] rounded-full bg-blue-800 text-white shadow-xl pl-[9px] pt-[3px] font-bold">{{Math.round(movie.vote_average)}}</p>
                     <p class="font-bold">{{movie.title}}</p>
                 </div>
             </div>
@@ -80,6 +82,7 @@ export default {
                     this.upcomingArray.push(this.upcomingMovies.results[i]);
                 }
             }
+            console.log(this.upcomingArray);
         },
         getImage(movie){
             let image = this.bgPath + movie.backdrop_path;
