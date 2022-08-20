@@ -32,6 +32,19 @@
         </div>
     </div>
 
+       <div class="text-green-400 mt-[200px] ml-10">
+        <p class="font-bold text-[20px] ml-[11%]">Now Playing-</p>
+        <div class="flex flex-wrap w-[80%] mx-auto">
+            <div v-for="movie in nowPlayingArray.slice(0,12)" :key="movie.title">
+                <div class="w-[220px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
+                    <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
+                    <p class="absolute -mt-[35px] w-[30px] h-[30px] rounded-full bg-blue-800 text-white shadow-xl pl-[9px] pt-[3px] font-bold">{{Math.round(movie.vote_average)}}</p>
+                    <p class="font-bold">{{movie.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="h-[500px]"></div>
   </section>
 
@@ -45,6 +58,8 @@ export default {
         return{
             trendingMovies:'',
             upcomingMovies:'',
+            nowPlayingMovies:'',
+            nowPlayingArray:[],
             trendingArray: [],
             upcomingArray:[],
             heroBg:``,
@@ -65,6 +80,11 @@ export default {
             this.upcomingMovies = await data.json();
             this.sortUpcomingMovies();
         },
+          async getNowPlayingMovies(){
+            const data = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=ee82108c7a30e37aeeb33fdac873495a&language=en-US&page=1");
+            this.nowPlayingMovies = await data.json();
+            this.sortNowPlayingMovies();
+        },
         getTrendingMovies(){
             for(let i = 0; i < 20; i++){
                 if(this.trendingMovies.results[i].title == undefined){
@@ -82,7 +102,15 @@ export default {
                     this.upcomingArray.push(this.upcomingMovies.results[i]);
                 }
             }
-            console.log(this.upcomingArray);
+        },
+        sortNowPlayingMovies(){
+              for(let i = 0; i<20; i++){
+                if(this.nowPlayingMovies.results[i].title == undefined){
+                    continue;
+                }else{
+                    this.nowPlayingArray.push(this.nowPlayingMovies.results[i]);
+                }
+           }
         },
         getImage(movie){
             let image = this.bgPath + movie.backdrop_path;
@@ -92,6 +120,7 @@ export default {
     created(){
         this.getFavoriteMovies();
         this.getUpcomingMovies();
+        this.getNowPlayingMovies();
     }
 }
 </script>
