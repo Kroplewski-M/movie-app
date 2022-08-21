@@ -6,7 +6,16 @@
         <p class="text-center relative z-50 text-white font-bold text-[1.5em] pt-[10px]">Now in cinemas!</p>
 
     </div>
-    <div class="text-green-400 mt-[200px] ml-10">
+    <div class="mt-[150px] text-center text-green-400 font-bold">
+            <a href="#" @click.prevent="this.changeFilter('All')" class="mr-[30px]" :style="[this.filter == 'All' ? {'color': 'white'} : '']">All</a>
+            <a href="#" @click.prevent="this.changeFilter('Trending')" class="mr-[30px]" :style="[this.filter == 'Trending' ? {'color': 'white'} : '']">Trending</a>
+            <a href="#" @click.prevent="this.changeFilter('Upcoming')" class="mr-[30px]" :style="[this.filter == 'Upcoming' ? {'color': 'white'} : '']">Upcoming</a>
+            <a href="#" class="mr-[50px]" @click.prevent="this.changeFilter('NowPlaying')" :style="[this.filter == 'NowPlaying' ? {'color': 'white'} : '']">Now Playing</a>
+            <input type="text" class="w-[200px] h-[30px] bg-[#232323] rounded-md mr-[10px] pl-[5px]" v-model="search">
+            <img src="@/resources/search.png" alt="" class="w-[20px] h-[20px] inline mb-[5px] hover:cursor-pointer">
+    </div>
+
+    <div v-if="this.filter == 'All' || this.filter == 'Trending'" class="text-green-400 mt-[200px] ml-10">
         <p class="font-bold text-[20px] ml-[11%]">Trending-</p>
         <div class="flex flex-wrap w-[80%] mx-auto">
             <div v-for="movie in trendingArray.slice(0,8)" :key="movie.title">
@@ -19,7 +28,7 @@
         </div>
     </div>
 
-    <div class="text-green-400 mt-[200px] ml-10">
+    <div v-if="this.filter == 'All' || this.filter == 'Upcoming'" class="text-green-400 mt-[200px] ml-10">
         <p class="font-bold text-[20px] ml-[11%]">Upcoming-</p>
         <div class="flex flex-wrap w-[80%] mx-auto">
             <div v-for="movie in upcomingArray.slice(0,8)" :key="movie.title">
@@ -32,7 +41,7 @@
         </div>
     </div>
 
-       <div class="text-green-400 mt-[200px] ml-10">
+       <div v-if="this.filter == 'All' || this.filter == 'NowPlaying'" class="text-green-400 mt-[200px] ml-10">
         <p class="font-bold text-[20px] ml-[11%]">Now Playing-</p>
         <div class="flex flex-wrap w-[80%] mx-auto">
             <div v-for="movie in nowPlayingArray.slice(0,8)" :key="movie.title">
@@ -45,7 +54,7 @@
         </div>
     </div>
 
-    <div class="h-[500px]"></div>
+    <div class="h-[300px]"></div>
   </section>
 
 </template>
@@ -65,6 +74,8 @@ export default {
             heroBg:``,
             heroName: ``,
             bgPath:"https://image.tmdb.org/t/p/w500",
+            filter:'All',
+            search:'',
         };
     },
     methods:{
@@ -115,6 +126,14 @@ export default {
         getImage(movie){
             let image = this.bgPath + movie.backdrop_path;
             return image;
+        },
+        changeFilter(name){
+            this.filter = name;
+        }
+    },
+    watch:{
+        search(){
+            
         }
     },
     created(){
