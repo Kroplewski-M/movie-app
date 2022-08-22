@@ -28,7 +28,7 @@
             <p class="font-bold text-[20px] ml-[11%]">Trending-</p>
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in trendingArray.slice(0, 8)" :key="movie.title">
-                   <router-link to="/movie"> <div
+                   <router-link :to="`/movie/${movie.title}`"> <div
                         class="w-[300px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
                         <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
                         <p
@@ -44,7 +44,7 @@
             <p class="font-bold text-[20px] ml-[11%]">Upcoming-</p>
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in upcomingArray.slice(0, 8)" :key="movie.title">
-                  <router-link to="/movie"><div
+                  <router-link :to="`/movie/${movie.title}`"><div
                         class="w-[300px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
                         <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
                         <p
@@ -60,7 +60,7 @@
             <p class="font-bold text-[20px] ml-[11%]">Now Playing-</p>
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in nowPlayingArray.slice(0, 8)" :key="movie.title">
-                    <router-link to="/movie"><div
+                    <router-link :to="`/movie/${movie.title}`"><div
                         class="w-[300px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
                         <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
                         <p
@@ -75,7 +75,7 @@
         <div v-if="this.filter == 'search'" class="text-green-400 mt-[200px] ml-10">
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in SearchedMoviesArray.slice(0, 8)" :key="movie.title">
-                    <router-link to="/movie"><div
+                    <router-link :to="`/movie/${movie.title}`"><div
                         class="w-[300px] h-[180px] rounded-md bg-white ml-5 mt-[50px] hover:cursor-pointer hover:shadow-white hover:shadow-lg shadow-md shadow-green-400">
                         <img :src="this.getImage(movie)" alt="" class="rounded-md w-[100%] h-[100%]">
                         <p

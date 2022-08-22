@@ -8,7 +8,7 @@ const routes = [
     component: AppMain
   },
   {
-    path: '/movie',
+    path: '/movie/:movie',
     name: 'movie',
     component: AppMovie,
   }
