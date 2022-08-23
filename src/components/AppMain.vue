@@ -3,13 +3,13 @@
 
 
     <section class="w-[100%] h-[auto] bg-[#121212]">
-        <div class="w-[100%] h-[200px]">
+        <router-link :to="`/movie/${this.trendingMovies.results[0].title}`"><div class="w-[100%] h-[200px]">
             <img :src="heroBg" alt=""
                 class="w-[50%] h-[300px] hover:shadow-xl hover:shadow-white hover:cursor-pointer absolute left-[25%] rounded-md">
             <p class="text-center relative z-50 text-white font-bold text-[3em] pt-[100px]">{{ this.heroName }}</p>
             <p class="text-center relative z-50 text-white font-bold text-[1.5em] pt-[10px]">Now in cinemas!</p>
+        </div></router-link>
 
-        </div>
         <div class="mt-[150px] text-center text-green-400 font-bold">
             <a href="#" @click.prevent="this.changeFilter('All')" class="mr-[30px]"
                 :style="[this.filter == 'All' ? { 'color': 'white' } : '']">All</a>

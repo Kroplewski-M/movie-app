@@ -1,12 +1,17 @@
 <template>
     <section class=" w-[100vw] h-[100vh] bg-[#121212] text-green-400">
-        <div class="w-[1500px] h-[1000px] mx-auto pt-10">
-            <img :src="this.movieImage" alt="" class="w-[500px] h-[700px] rounded-md float-left mr-5">
-            <p class="font-bold text-[50px] ml-10 h-[10px]">{{this.movie}}</p>
-            <p class="mt-[100px] float-left text-green-500 mr-5">Release date: <span class="font-bold">{{this.movieRelease}}</span></p>
-            <p class="mt-[100px] float-left text-green-500">Vote Average: <span class="ml-[10px] font-bold">{{this.movieAverage}} </span></p>
-            <p class="font-bold mt-[170px] text-green-500 text-[30px]">Description:</p>
-            <p class="float-left w-[700px] mt-[20px] text-[17px] text-green-500">{{this.movieDesc}}</p>
+        <router-link to="/"><img src="@/resources/back.png" alt="" class="w-[50px] h-[50px] ml-5 mt-[10px] absolute"></router-link>
+        <div class="w-[1500px] h-[1000px] mx-auto pt-20">
+            <div class="w-[100%] h-[750px] bg-[#232323] rounded-md">
+                <img :src="this.movieImage" alt="" class="w-[500px] h-[700px] rounded-md float-left mr-5 ml-5 mt-5">
+                <p class="font-bold text-[50px] ml-10 pt-5">{{this.movie}}</p>
+                <img src="@/resources/calender.png" alt="" class="w-[25px] h-[25px] float-left mt-[49px] mr-[5px]">
+                <p class="mt-[50px] float-left text-green-500 mr-5">Release date: <span class="font-bold">{{this.movieRelease}}</span></p>
+                <img src="@/resources/vote.png" alt="" class="w-[25px] h-[25px] float-left mt-[49px] mr-[5px]">
+                <p class="mt-[50px] float-left text-green-500">Vote Average: <span class="ml-[10px] font-bold">{{this.movieAverage}} </span></p>
+                <p class="font-bold mt-[90px] text-green-500 text-[30px]">Description:</p>
+                <p class="float-left w-[700px] mt-[20px] text-[17px] text-green-500 italic">{{this.movieDesc}}</p>
+            </div>
         </div>
     </section>
 </template>
