@@ -10,21 +10,21 @@
             <p class="text-center relative z-50 text-white font-bold text-[1.5em] pt-[10px]">Now in cinemas!</p>
         </div></router-link>
 
-        <div class="mt-[150px] text-center text-green-400 font-bold">
+        <div class="mt-[150px] text-center text-green-400 font-bold flex flex-col md:flex-row text-center place-content-center">
             <a href="#" @click.prevent="this.changeFilter('All')" class="mr-[30px]"
                 :style="[this.filter == 'All' ? { 'color': 'white' } : '']">All</a>
             <a href="#" @click.prevent="this.changeFilter('Trending')" class="mr-[30px]"
                 :style="[this.filter == 'Trending' ? { 'color': 'white' } : '']">Trending</a>
             <a href="#" @click.prevent="this.changeFilter('Upcoming')" class="mr-[30px]"
                 :style="[this.filter == 'Upcoming' ? { 'color': 'white' } : '']">Upcoming</a>
-            <a href="#" class="mr-[50px]" @click.prevent="this.changeFilter('NowPlaying')"
+            <a href="#" class="mr-[80px] ml-[40px] md:ml-[0px] md:mr-[50px]" @click.prevent="this.changeFilter('NowPlaying')"
                 :style="[this.filter == 'NowPlaying' ? { 'color': 'white' } : '']">Now Playing</a>
-            <input type="text" class="w-[200px] h-[30px] bg-[#232323] rounded-md mr-[10px] pl-[5px]" @keydown.enter="this.getSearch" v-model="search">
-            <img src="@/resources/search.png" alt="" class="w-[20px] h-[20px] inline mb-[5px] hover:cursor-pointer"
+            <input type="text" class="w-[200px] h-[30px] bg-[#232323] rounded-md mr-[10px] pl-[5px] ml-[110px] md:ml-[0px]" @keydown.enter="this.getSearch" v-model="search">
+            <img src="@/resources/search.png" alt="" class="w-[20px] h-[20px] inline mb-[5px] hover:cursor-pointer hidden md:inline"
                 @click.prevent="this.getSearch">
         </div>
 
-        <div v-if="this.filter == 'All' || this.filter == 'Trending'" class="text-green-400 mt-[200px] ml-10">
+        <div v-if="this.filter == 'All' || this.filter == 'Trending'" class="text-green-400 mt-[200px] md:ml-10">
             <p class="font-bold text-[20px] ml-[11%]">Trending-</p>
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in trendingArray.slice(0, 8)" :key="movie.title">
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div v-if="this.filter == 'All' || this.filter == 'Upcoming'" class="text-green-400 mt-[200px] ml-10">
+        <div v-if="this.filter == 'All' || this.filter == 'Upcoming'" class="text-green-400 mt-[200px] md:ml-10">
             <p class="font-bold text-[20px] ml-[11%]">Upcoming-</p>
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in upcomingArray.slice(0, 8)" :key="movie.title">
@@ -56,7 +56,7 @@
             </div>
         </div>
 
-        <div v-if="this.filter == 'All' || this.filter == 'NowPlaying'" class="text-green-400 mt-[200px] ml-10">
+        <div v-if="this.filter == 'All' || this.filter == 'NowPlaying'" class="text-green-400 mt-[200px] md:ml-10">
             <p class="font-bold text-[20px] ml-[11%]">Now Playing-</p>
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in nowPlayingArray.slice(0, 8)" :key="movie.title">
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div v-if="this.filter == 'search'" class="text-green-400 mt-[200px] ml-10">
+        <div v-if="this.filter == 'search'" class="text-green-400 mt-[200px] md:ml-10">
             <div class="flex flex-wrap w-[80%] mx-auto">
                 <div v-for="movie in SearchedMoviesArray.slice(0, 8)" :key="movie.title">
                     <router-link :to="`/movie/${movie.title}`"><div
