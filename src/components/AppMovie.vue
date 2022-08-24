@@ -1,7 +1,7 @@
 <template>
-    <section class=" w-[100%] h-[200vh] md:h-[110vh] bg-[#121212] text-green-400">
-        <router-link to="/"><img src="@/resources/back.png" alt="" class="w-[50px] h-[50px] ml-5 mt-[10px] absolute"></router-link>
-        <div class="md:w-[1500px] md:h-[1000px] mx-auto pt-20">
+    <section class=" w-[100%] h-[110vh] md:h-[110vh] bg-[#121212] text-green-400">
+        <router-link to="/"><img src="@/resources/back.png" alt="" class="w-[50px] h-[50px] ml-5 mt-[20px] absolute"></router-link>
+        <div class="md:w-[1500px] md:h-[1000px] mx-auto pt-[80px]">
             <div class="w-[100%] md:h-[750px] h-[auto] bg-[#232323] rounded-md">
                 <img :src="this.movieImage" alt="" class="md:w-[500px] w-[350px] md:h-[700px] rounded-md md:float-left mr-5 ml-5 mt-5">
                 <p class="font-bold text-[50px] ml-10 pt-5">{{this.movie}}</p>
@@ -50,7 +50,8 @@ export default {
         },
     },  
     mounted(){
-        this.getMovie();    
+        this.getMovie();  
+        window.scrollTo(0, 0);  
     },
 }
 </script>
